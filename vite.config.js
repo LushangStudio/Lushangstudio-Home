@@ -43,6 +43,7 @@ export default defineConfig({
   ],
   build: {
     outDir: "dist",
+    assetsDir: "home-assets",
     emptyOutDir: true,
     minify: "esbuild",
     cssMinify: true,

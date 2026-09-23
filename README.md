@@ -35,7 +35,7 @@ npm run preview
 ```
 
 - `format`：用 Prettier 整理源码缩进、换行和引号。
-- `build`：生成 `dist/index.html`、`dist/apps.json` 和带内容哈希的 `dist/assets/`。
+- `build`：生成 `dist/index.html`、`dist/apps.json` 和带内容哈希的 `dist/home-assets/`。
 - HTML 移除注释并折叠空白，JS/CSS 压缩；JSON 去除多余空白。
 - `preview`：在 <http://127.0.0.1:4173/> 检查构建结果，只验证首页产物，不提供完整应用后端反代。
 - 不发布源码映射；`dist/` 与 `node_modules/` 不提交 Git。
