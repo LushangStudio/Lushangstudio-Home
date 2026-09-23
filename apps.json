@@ -1,24 +1,24 @@
 [
   {
     "id": "wordtxt",
-    "name": "WordTxT",
-    "subtitle": "文字整理助手",
-    "description": "整理通知、提取信息，让繁琐的文字工作更有条理。",
+    "name": "学工备忘助手",
+    "subtitle": "",
+    "description": "整理通知、提取信息。",
     "href": "/wordtxt/",
     "icon": "W",
     "color": "blue",
     "status": "available",
-    "tag": "文字与效率"
+    "tag": ""
   },
   {
     "id": "leave",
-    "name": "请假申请",
-    "subtitle": "课程 · 活动 · 更多事项",
-    "description": "一次填写多个请假事项，查看审批进度，获取请假条。",
+    "name": "电子请假条",
+    "subtitle": "",
+    "description": "在线申请与审批请假条。",
     "href": "/leave/",
     "icon": "↗",
     "color": "green",
     "status": "planned",
-    "tag": "即将上线"
+    "tag": ""
   }
 ]
