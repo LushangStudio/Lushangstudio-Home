@@ -56,3 +56,5 @@ npm run preview
 等用户修改好 UI 并明确通知后，再发布 `dist/` 中的静态文件，不直接发布整个 Git 仓库。Nginx 路径为首页 `/`、WordTxT `/wordtxt/`，保留原 WordTxT API `/api/`。
 
 **下一批不部署请假应用。** 生产 apps.json 里请假仍为“即将上线”。迁移与 UIS 登录回跳说明见 Lushangstudio-operation，当前没有改动服务器配置。
+
+本次服务器只发布学工备忘助手入口：使用 `HOME_EXCLUDE_APPS=leave npm run build`，产物中不包含请假卡片。本地演示目录仍保留两个应用。
