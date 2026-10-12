@@ -7,7 +7,7 @@
     "href": "/wordtxt/",
     "icon": "W",
     "color": "blue",
-    "status": "available",
+    "status": "released",
     "tag": ""
   },
   {
@@ -18,7 +18,7 @@
     "href": "/leave/",
     "icon": "↗",
     "color": "green",
-    "status": "planned",
+    "status": "devel",
     "tag": ""
   }
 ]

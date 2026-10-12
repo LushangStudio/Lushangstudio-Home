@@ -11,12 +11,7 @@ function applicationCatalog() {
         type: "asset",
         fileName: "apps.json",
         source: JSON.stringify(
-          JSON.parse(
-            readFileSync(new URL("./apps.json", import.meta.url), "utf8"),
-          ).filter(
-            (application) =>
-              !(process.env.HOME_EXCLUDE_APPS || "").split(",").includes(application.id),
-          ),
+          JSON.parse(readFileSync(new URL("./apps.json", import.meta.url), "utf8")),
         ),
       });
     },

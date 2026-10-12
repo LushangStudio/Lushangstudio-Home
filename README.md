@@ -19,7 +19,7 @@ npm run dev
 python3 scripts/serve.py
 ```
 
-打开 <http://127.0.0.1:8080/>。此入口直接读取可编辑源码，因此改动后刷新即可看到。它临时把请假应用标记为“本地演示”，不会改写 apps.json 的生产状态。
+打开 <http://127.0.0.1:8080/>。此入口直接读取可编辑源码，因此改动后刷新即可看到。本地预览标签不改变应用发布状态。默认仅展示 released 应用，访问 <http://127.0.0.1:8080/?showall> 可展示全部应用。
 
 启动相邻 Ask4LeaveRequest 的 8001 服务后，可体验申请、审批和 PDF 闭环。WordTxT 需先在其 frontend 目录运行 `npm ci && npm run build -- --base=/wordtxt/`，再在 backend 目录启动原服务的 8000 端口。UIS 登录与 AI 生成仍需要正式配置。
 
@@ -55,6 +55,13 @@ npm run preview
 
 等用户修改好 UI 并明确通知后，再发布 `dist/` 中的静态文件，不直接发布整个 Git 仓库。Nginx 路径为首页 `/`、WordTxT `/wordtxt/`，保留原 WordTxT API `/api/`。
 
-**下一批不部署请假应用。** 生产 apps.json 里请假仍为“即将上线”。迁移与 UIS 登录回跳说明见 Lushangstudio-operation，当前没有改动服务器配置。
+应用在 `apps.json` 中使用 `status` 分类：
 
-本次服务器只发布学工备忘助手入口：使用 `HOME_EXCLUDE_APPS=leave npm run build`，产物中不包含请假卡片。本地演示目录仍保留两个应用。
+- `released`：已发布，默认展示（当前为学工备忘助手）。
+- `devel`：开发中，默认隐藏（当前为电子请假条）。
+
+URL 中存在 `showall` 参数即可显示所有应用，例如 `/?showall` 或 `/?showall=1`。搜索和应用数量只基于当前可展示的目录；开发应用显示时同样可点击。开发模式与生产构建遵循同一规则。
+
+`npm run build` 保留完整目录，前端负责隐藏，不再使用 `HOME_EXCLUDE_APPS` 构建时排除。此显示开关不是权限控制，不改变应用路由、部署状态或后端鉴权。生产环境的应用标签保持空字符串。
+
+请假应用仍未部署生产；展示开发入口不代表该地址已可用。本次修改不部署服务器，后续发布需明确授权。

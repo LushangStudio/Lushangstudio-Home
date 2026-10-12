@@ -27,13 +27,10 @@ function createTextElement(tagName, className, text) {
 }
 
 function createApplicationCard(application) {
-  const isAvailable = application.status === "available";
-  const card = document.createElement(isAvailable ? "a" : "article");
+  const card = document.createElement("a");
   card.className = `app ${application.color}`;
 
-  if (isAvailable) {
-    card.href = application.href;
-  }
+  card.href = application.href;
 
   const content = [
     ["div", "icon", application.icon],
@@ -41,7 +38,7 @@ function createApplicationCard(application) {
     ["h3", "", application.name],
     ["h4", "", application.subtitle],
     ["p", "", application.description],
-    ["span", "open", isAvailable ? "打开应用 ↗" : "准备中 · 敬请期待"],
+    ["span", "open", "打开应用 ↗"],
   ];
 
   for (const [tagName, className, text] of content) {
@@ -70,18 +67,11 @@ function renderApplications(applications, query = "") {
   }
 }
 
-const applications = await loadApplications();
-
-// npm dev exposes the same local demonstration links as the workspace launcher.
-// Production builds retain the catalog's explicit release status.
-if (import.meta.env?.DEV) {
-  for (const application of applications) {
-    if (application.id === "leave") {
-      application.status = "available";
-      application.tag = "本地演示";
-    }
-  }
-}
+// Visibility is a frontend display preference, not an access-control boundary.
+const showAll = new URLSearchParams(window.location.search).has("showall");
+const applications = (await loadApplications()).filter(
+  (application) => showAll || application.status === "released",
+);
 
 searchInput.addEventListener("input", (event) => {
   renderApplications(applications, event.target.value);

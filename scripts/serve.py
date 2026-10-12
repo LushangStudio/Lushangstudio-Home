@@ -60,9 +60,9 @@ class WorkspaceHandler(SimpleHTTPRequestHandler):
         applications = json.loads((HOME_ROOT / "apps.json").read_text())
         for application in applications:
             if application["id"] == "leave":
-                application.update(status="available", tag="本地演示")
+                application.update(tag="本地演示")
             elif application["id"] == "wordtxt":
-                application.update(status="available", tag="原项目 · 本地预览")
+                application.update(tag="原项目 · 本地预览")
 
         content = json.dumps(applications, ensure_ascii=False).encode("utf-8")
         self.send_response(200)
