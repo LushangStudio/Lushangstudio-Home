@@ -36,14 +36,23 @@ function createApplicationCard(application) {
     ["div", "icon", application.icon],
     ["span", "category", application.tag],
     ["h3", "", application.name],
-    ["h4", "", application.subtitle],
+    ["span", "subtitle", application.subtitle],
     ["p", "", application.description],
-    ["span", "open", "打开应用 ↗"],
   ];
 
   for (const [tagName, className, text] of content) {
-    card.append(createTextElement(tagName, className, text));
+    if (text) card.append(createTextElement(tagName, className, text));
   }
+  if (application.features?.length) {
+    const features = document.createElement("ul");
+    features.className = "features";
+    features.setAttribute("aria-label", "主要功能");
+    for (const feature of application.features) {
+      features.append(createTextElement("li", "", feature));
+    }
+    card.append(features);
+  }
+  card.append(createTextElement("span", "open", "打开应用 ↗"));
   return card;
 }
 
@@ -54,6 +63,7 @@ function renderApplications(applications, query = "") {
       application.name,
       application.subtitle,
       application.description,
+      ...(application.features ?? []),
     ].join(" ");
     return searchableText.toLocaleLowerCase().includes(normalizedQuery);
   });

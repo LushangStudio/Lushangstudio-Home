@@ -8,14 +8,28 @@
   </head>
   <body>
     <header>
-      <a href="./" class="brand">路上工作室</a>
-      <span class="edition">LUSHANG STUDIO</span>
+      <a href="./" class="brand">
+        <span>路上工作室</span>
+        <span class="edition">LUSHANG STUDIO</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#products">产品</a>
+        <a href="#about">关于我们</a>
+      </nav>
     </header>
     <main>
-      <section class="board">
+      <section class="intro" aria-labelledby="intro-title">
+        <h1 id="intro-title">让工具处理琐事，让你专注于人。</h1>
+        <p>
+          路上工作室面向校园中的真实需求，开发实用的数智工具。
+          <br class="desktop-break" />
+          从整理学工备忘、筛选事项到生成通知，让信息处理与日常协作更轻松。
+        </p>
+      </section>
+      <section id="products" class="board" aria-labelledby="products-title">
         <div class="bar">
-          <h2>
-            全部应用
+          <h2 id="products-title">
+            产品
             <span id="count"></span>
           </h2>
           <label>
@@ -27,8 +41,18 @@
         <p id="empty" hidden>没有找到匹配的应用。</p>
       </section>
     </main>
-    <footer>
-      <span>路上工作室</span>
+    <footer id="about" aria-labelledby="about-title">
+      <div class="about-copy">
+        <h2 id="about-title">路上工作室</h2>
+        <p>
+          作为复旦大学辅导员工作室之一，我们在学校数智创新中心的指导下，聚焦学生工作数字化赋能，以智能技术联结数据、优化流程，将校园中的真实需求转化为实用的工具与方法。
+        </p>
+      </div>
+      <div class="contact">
+        <h3>联系我们</h3>
+        <a href="mailto:litianqin@fudan.edu.cn">litianqin@fudan.edu.cn</a>
+        <a href="mailto:silin_dai@fudan.edu.cn">silin_dai@fudan.edu.cn</a>
+      </div>
     </footer>
     <script type="module" src="app.js"></script>
   </body>
