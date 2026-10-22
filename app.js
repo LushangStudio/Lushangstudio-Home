@@ -77,13 +77,18 @@ function renderApplications(applications, query = "") {
   }
 }
 
-// Visibility is a frontend display preference, not an access-control boundary.
-const showAll = new URLSearchParams(window.location.search).has("showall");
-const applications = (await loadApplications()).filter(
-  (application) => showAll || application.status === "released",
-);
+// WebVPN wraps scripts in a regular function, so avoid top-level await.
+async function initializeApplications() {
+  // Visibility is a frontend preference, not an access-control boundary.
+  const showAll = new URLSearchParams(window.location.search).has("showall");
+  const applications = (await loadApplications()).filter(
+    (application) => showAll || application.status === "released",
+  );
 
-searchInput.addEventListener("input", (event) => {
-  renderApplications(applications, event.target.value);
-});
-renderApplications(applications);
+  searchInput.addEventListener("input", (event) => {
+    renderApplications(applications, event.target.value);
+  });
+  renderApplications(applications);
+}
+
+initializeApplications();
