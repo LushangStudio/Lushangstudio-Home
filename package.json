@@ -1,11 +1,11 @@
 {
   "name": "lushangstudio-home",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5174 --strictPort",
-    "build": "vite build",
+    "build": "vite build && node scripts/check-webvpn-build.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "format": "prettier --write index.html app.js style.css vite.config.js apps.json package.json README.md",
     "format:check": "prettier --check index.html app.js style.css vite.config.js apps.json package.json README.md"

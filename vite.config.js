@@ -37,6 +37,9 @@ export default defineConfig({
     },
   ],
   build: {
+    cssCodeSplit: false,
+    // WebVPN wraps scripts in a normal function; avoid module-only syntax.
+    rollupOptions: { output: { format: "iife", inlineDynamicImports: true } },
     outDir: "dist",
     assetsDir: "home-assets",
     emptyOutDir: true,
